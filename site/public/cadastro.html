@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Wave Lab | Cadastro</title>
+
+
+    <script src="./js/funcoes.js"></script>
+    <link rel="icon" href="assets/frascoRosa.png">
+    <link rel="stylesheet" href="css/estiloCadastro1.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+</head>
+
+<body>
+    <div class="tela">
+        <div class="caixaCadastroLogin">
+            <div class="topo">
+                <div class="img"><img src="assets/Logo Rosa.svg"></div>
+                <div class="camposObrigatorios">* Campos Obrigatórios</div>
+            </div>
+            <div class="caixaCampos">
+                <div class="campos">
+                    <span>* Nome</span>
+                    <input id="nome_input" class="ipt">
+                </div>
+                <div class="campos">
+                    <span>* Sobrenome</span>
+                    <input id="sobrenome_input" class="ipt">
+                </div>
+                <div class="campos">
+                    <span>* Email</span>
+                    <input id="email_input" type="email" class="ipt">
+                </div>
+                <div class="campos">
+                    <span>* Idade</span>
+                    <input id="idade_input" type="number" class="ipt">
+                </div>
+                <div class="campos">
+                    <span>* Senha</span>
+                    <input id="senha_input" type="password" class="ipt">
+                </div>
+                <div class="campos">
+                    <span>* Confirmação Senha</span>
+                    <input id="confirmacao_senha_input" type="password" class="ipt">
+                </div>
+            </div>
+            <div class="parteBaixo">
+                <div class="proximaEtapa">
+                    <button onclick="cadastrar()">Proxima etapa</button>
+                </div>
+                <div class="jaTemUma">
+                    <span>Já tem uma conta?</span>
+                    <button onclick="">Faça login</button>
+                </div>
+            </div>
+        </div>
+        <div id="div_aguardar" class="loading-div">
+            <img id="loading-gif">
+        </div>
+
+        <div id="div_erros_login"></div>
+    </div>
+</body>
+
+</html>
+<script>
+function cadastrar() {
+    // aguardar();
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var nomeVar = nome_input.value;
+    var sobrenomeVar = sobrenome_input.value;
+    var emailVar = email_input.value;
+    var idadeVar = idade_input.value;
+    var senhaVar = senha_input.value;
+    var confirmacaoSenhaVar = confirmacao_senha_input.value;
+
+    // if (nomeVar == "" || sobrenomeVar == "" || emailVar == "" || idadeVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
+    //     cardErro.style.display = "block"
+    //     mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+
+    //     finalizarAguardar();
+    //     return false;
+    // }
+    // else {
+    //     setInterval(sumirMensagem, 5000)
+    // }
+
+    // Enviando o valor da nova input
+    fetch("/usuarios/cadastrar", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            // crie um atributo que recebe o valor recuperado aqui
+            // Agora vá para o arquivo routes/usuario.js
+            nomeServer: nomeVar,
+            sobrenomeServer: sobrenomeVar,
+            emailServer: emailVar,
+            idadeServer: idadeVar,
+            senhaServer: senhaVar
+        })
+    }).then(function (resposta) {
+
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+            // cardErro.style.display = "block";
+
+            // mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+            setTimeout(() => {
+                sessionStorage.ID_EMPRESA = json.idEndereco;
+                window.location = "index.html";
+                // window.location.href = 'outra-pagina.html';
+            }, "2000")
+
+            limparFormulario();
+            finalizarAguardar();
+        } else {
+            throw ("Houve um erro ao tentar realizar o cadastro!");
+        }
+    }).catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        finalizarAguardar();
+    });
+
+    return false;
+}
+
+// function sumirMensagem() {
+//     cardErro.style.display = "none"
+// }
+
+</script>

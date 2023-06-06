@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@900&display=swap');
+
+@font-face {
+    font-family: [barlow];
+    src: url(https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap);
+}
+@font-face {
+    font-family: [nunitoBlack];
+    src: url(https://fonts.googleapis.com/css2?family=Nunito:wght@900&display=swap);
+}
+
+body,
+html {
+    height: 1000px;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Nunito', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    /* background: #EBF0DE; */
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+html,
+body {
+    height: 5000px;
+    max-width: 100%;
+    background: linear-gradient(360deg, #FF003D 0%, #191919 29.27%);
+    background-blend-mode: darken;
+    background-repeat: no-repeat;
+}
+
+.tela {
+    height: 100%;
+    width: 100%;
+    /* justify-content: center; */
+    flex-direction: column;
+    /* background: linear-gradient(360deg, #FF003D 0%, #191919 29.27%); */
+    background-blend-mode: darken;
+    background-repeat: no-repeat;
+    /* overflow-y: auto; */
+   
+
+}
+::-webkit-scrollbar-track {
+    background-color: #FF003D; /* Cor de fundo da trilha */
+}
+
+.flex {
+    display: flex;
+}
+
+.navbar {
+
+    gap: 60px;
+    padding-right: 60px;
+}
+
+.immagem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    width: 200;
+}
+
+.immagem img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 125px;
+    padding: 40px 0 0 0;
+
+}
+
+.loginCadastro {
+    gap: 90px;
+}
+
+.cabecalho {
+    justify-content: space-between;
+    width: 90%;
+    padding: 30px 0 0 70px;
+    align-items: center;
+    height: 75px;
+
+}
+
+.espacos {
+    padding-right: 20px;
+}
+
+.corpoSinta {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    background-image: url("../assets/imsSintaSombra.png");
+    background-size: cover;
+    height: 615px;
+    width: 100%;
+
+}
+
+.corpoSinta span {
+    font-family: 'Barlow', sans-serif;
+    font-size: 65px;
+    color: #FF003D;
+    font-weight: 1000
+}
+
+.corpoSobre {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    background-size: cover;
+    height: 70%;
+    width: 100%;
+    font-size: 20px;
+    color: azure;
+}
+
+.corpoSobre .titulo {
+    font-family: 'Nunito Black', sans-serif;
+    color: #FF003D;
+    font-weight: 900;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+}
+
+.tamanhodele {
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    color: azure;
+    font-size: medium;
+    width: 400px;
+}
+
+.conteudo {
+    font-family: 'Nunito Black', sans-serif;
+    display: flex;
+    flex-direction: column;
+    width: 700px;
+    font-weight: 900;
+}

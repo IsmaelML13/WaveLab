@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Wave Lab | Cadastro</title>
+
+
+    <script src="./js/funcoes.js"></script>
+    <link rel="icon" href="assets/frascoRosa.png">
+    <link rel="stylesheet" href="css/estiloCadastroEnd.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+</head>
+
+<body>
+    <div class="tela">
+        <div class="caixaCadastroLogin">
+            <div class="topo">
+                <div class="img"><img src="assets/Logo Rosa.svg"></div>
+                <div class="camposObrigatorios">Todos campos são orbigatórios.</div>
+            </div>
+            <div class="caixaCampos">
+                <div class="segundaLinha">
+                    <div class="caixaLinha">
+                        <span>CEP:</span>
+                        <input class="iptCEP" id="cep">
+                    </div>
+                    <div class="caixaLinha">
+                        <span>Região do Brasil:</span>
+                        <select id="regiaoBrasil" name="regiaoBrasil">
+                            <option value=""></option>
+                            <option value="Sudeste">Sudeste</option>
+                            <option value="Nordeste">Nordeste</option>
+                            <option value="Norte">Norte</option>
+                            <option value="Centro">Centro-oeste</option>
+                            <option value="Sul">Sul</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="segundaLinha">
+                    <div class="caixaLinha">
+                        <span>Endereço:</span>
+                        <input maxlength="9" class="iptCEP" id="logradouro">
+                    </div>
+                    <div class="caixaLinha">
+                        <span>Número:</span>
+                        <input class="iptCEP" id="numero">
+                    </div>
+                </div>
+                <div class="segundaLinha">
+                    <div class="caixaLinha">
+                        <span>Complemento:</span>
+                        <input class="iptCEP" id="complemento">
+                    </div>
+                    <div class="caixaLinha">
+                        <span>Bairro:</span>
+                        <input class="iptCEP" id="bairro">
+                    </div>
+                </div>
+                <div class="segundaLinha">
+                    <div class="caixaLinha">
+                        <span>Cidade:</span>
+                        <input class="iptCEP" id="localidade">
+                    </div>
+                    <div class="caixaLinha">
+                        <span>UF:</span>
+                        <input class="iptCEP" id="uf">
+                    </div>
+                </div>
+            </div>
+            <div class="parteBaixo">
+                <div class="proximaEtapa">
+                    <button onclick="cadastrarEnd()">Proxima etapa</button>
+                </div>
+                <div class="jaTemUma">
+                    <span>Já tem uma conta?</span>
+                    <button onclick="">Faça login</button>
+                </div>
+            </div>
+        </div>
+        <div id="div_aguardar" class="loading-div">
+            <img id="loading-gif">
+        </div>
+
+        <div id="div_erros_login"></div>
+    </div>
+</body>
+
+</html>
+<script>
+
+</script>
+<script>
+
+    var cep = document.getElementById("cep")
+
+    var mostrarDados = (resultado) => {
+        for (const campo in resultado) {
+            if (document.getElementById(campo)) {
+                document.querySelector("#"+campo).value = resultado[campo]
+                // const element = object[campo];
+
+            }
+        }
+    }
+
+    cep.addEventListener("blur", (e) => {
+        var pesquisa = cep.value.replace("-", "")
+        var options = {
+            method: 'GET',
+            mode: 'cors',
+            cache: 'default'
+        }
+
+        fetch(`https://viacep.com.br/ws/${pesquisa}/json/`, options)
+            .then(resposta => {
+                resposta.json()
+                .then(dados => mostrarDados(dados))
+            })
+            .catch(e => console.log("Erro." + e, message))
+    })
+
+
+
+
+
+
+    function cadastrarEnd() {
+
+        if(complemento.value == ""){
+            complemento.value == "null"
+        }
+        // aguardar();
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var cepVar = cep.value;
+        var logradouroVar = logradouro.value;
+        var regiaoVar = regiaoBrasil.value;
+        var numeroVar = numero.value;
+        var complementoVar = complemento.value;
+        var bairroVar = bairro.value;
+        var cidadeVar = localidade.value;
+        var ufVar = uf.value;
+
+        // if (cepVar == "" || logradouroVar == "" || regiaoVar == "" || numeroVar == "" || complementoVar == "" || bairroVar == "" || cidadeVar == "" || ufVar == "") {
+        //     cardErro.style.display = "block"
+        //     mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+
+        //     finalizarAguardar();
+        //     return false;
+        // }
+        // else {
+        //     setInterval(sumirMensagem, 5000)
+        // }
+
+        // Enviando o valor da nova input
+        fetch("/usuariosEnd/cadastrarEnd", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                cepServer: cepVar,
+                logradouroServer: logradouroVar,
+                regiaoServer: regiaoVar,
+                numeroServer: numeroVar,
+                complementoServer: complementoVar,
+                bairroServer: bairroVar,
+                cidadeServer: cidadeVar,
+                ufServer: ufVar
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                // cardErro.style.display = "block";
+
+                // mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+                // setTimeout(() => {
+                    window.location = "cadastro.html";
+                    // window.location.href = 'outra-pagina.html';
+                // }, "2000")
+
+                // limparFormulario();
+                // finalizarAguardar();
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            // finalizarAguardar();
+        });
+
+        return false;
+    }
+
+    // function sumirMensagem() {
+    //     cardErro.style.display = "none"
+    // }
+
+</script>

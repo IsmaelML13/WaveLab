@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
+body,
+html {
+    height: 100%;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Nunito', sans-serif;
+}
+
+input {
+    background-color: transparent;
+    border: 1px solid #CBCBCB;
+    border-radius: 7.5px;
+    width: 485px;
+    height: 35px;
+    color: white;
+    padding: 0 0 0 8px;
+}
+
+/* .jaTemUma button{
+    background-color: transparent;
+} */
+
+.tela {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, #181818 28%, #FF003D 116%);
+}
+
+.caixaCadastroLogin {
+    height: 645px;
+    width: 645px;
+    background: #191919;
+    box-shadow: 8px 8px 4px rgba(0, 0, 0, 0.8);
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* gap: 35px; */
+}
+
+.topo {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px 0 20px 0;
+}
+
+.img {
+    /* padding-left: 33%; */
+    height: 80px;
+    width: 160px;
+}
+
+.camposObrigatorios {
+    color: #FF003D;
+}
+
+.caixaCampos {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 0 0 15px 0;
+
+}
+
+.campos {
+    display: flex;
+    flex-direction: column;
+    color: rgba(255, 0, 61, 1);
+}
+
+.parteBaixo {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    gap: 15px;
+    width: 501px;
+
+}
+
+.proximaEtapa {
+    display: flex;
+    justify-content: center;
+}
+
+.proximaEtapa button {
+    background: #FF003D;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    color: white;
+    width: 510px;
+    height: 36px;
+    cursor: pointer;
+
+}
+
+.jaTemUma {
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+.jaTemUma button {
+    color: #FF003D;
+    font-size: 15px;
+    font-weight: bold;
+    text-decoration: underline;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}

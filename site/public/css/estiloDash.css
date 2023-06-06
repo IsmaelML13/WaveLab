@@ -1,0 +1,218 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@900&display=swap');
+
+
+body,
+html {
+    height: 100%;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Nunito', sans-serif;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+}
+
+li {
+    list-style: none;
+}
+
+/* .jaTemUma button{
+    background-color: transparent;
+} */
+ul {
+    list-style: none;
+}
+
+.tela {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    /* flex-direction: column; */
+    /* align-items: center; */
+    justify-content: center;
+    background-color: #191919;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    width: 15%;
+    background: linear-gradient(180deg, #D80A3C 55.03%, #191919 78.22%);
+}
+
+.cima {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 110px;
+    align-items: center;
+}
+
+.img img {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    margin: 25px;
+    margin-left: 60px;
+}
+
+.agora {
+    list-style: none;
+    color: #191919;
+}
+
+.lista span {
+    color: #191919;
+    font-size: 18px;
+    text-decoration: none;
+    font-weight: 900;
+
+}
+
+.listaWave li a {
+    text-decoration: none;
+}
+
+.listaWave {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+    padding-right: 36px;
+    gap: 12px;
+
+}
+
+.agora {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+}
+
+.lista span {
+    /* background-color: #191919; */
+    font-family: 'Nunito Black', sans-serif;
+    color: #000000;
+    font-size: 20px;
+    text-decoration: none;
+    font-weight: 1000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 40px;
+    border-radius: 12px;
+}
+
+.agora span {
+    /* display: flex; */
+    font-family: 'Nunito Black', sans-serif;
+
+    background-color: #191919;
+    color: rgba(255, 0, 61, 1);
+    font-size: 18px;
+    text-decoration: none;
+    font-weight: 900;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 40px;
+    border-radius: 12px;
+}
+
+.frasquinho {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.usuario {
+    color: #FF003D;
+    font-weight: 900;
+
+}
+
+.baixo {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-bottom: 20px;
+}
+
+.conteudo {
+    display: flex;
+    flex-direction: column;
+    background-image: url("../assets/fundoDash.svg");
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.caixaBuscador {
+    font-family: 'Nunito Black', sans-serif;
+    display: flex;
+    flex-direction: column;
+    width: 900px;
+    height: 700px;
+    background: rgba(25, 25, 25, 0.93);
+    border: 1px solid #000000;
+    box-shadow: 8px 8px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 56px;
+    align-items: center;
+    justify-content: center;
+    color: azure;
+    font-weight: 900;
+}
+
+.caixaBuscador span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imgA{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imgA img{
+    border-radius: 20px;
+    border: azure 8px solid;
+}
+
+.proxima a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: azure;
+}
+
+.proxima{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 40px;
+    background: #FF003D;
+    border-radius: 10px;
+    color: azure;
+}

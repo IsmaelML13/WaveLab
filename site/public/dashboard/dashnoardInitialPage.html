@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Wave Lab </title>
+    <link rel="icon" href="assets/frascoRosa.png">
+    <link rel="stylesheet" href="/public/css/estiloDash.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+</head>
+
+<body>
+    <div class="tela">
+        <div class="navbar">
+            <div class="cima">
+                <div class="img"><img src="/public/assets/Loog preta.svg" height="125px"></div>
+                <div class="camposP">
+                    <ul class="listaWave">
+                        <li class="agora">
+                            <a href="dashboardPage.html">
+                                <i class="uil uil-create-dashboard"></i>
+                                <span class="lista">Buscador</span>
+                            </a>
+                        </li>
+                        <li class="lista">
+                            <a href="estatisticaPage.html">
+                                <i class="uil uil-presentation-line"></i>
+                                <span class="lista">Playlist</span>
+                            </a>
+                        </li>
+                        <li class="lista">
+                            <a href="estatisticaPage.html">
+                                <i class="uil uil-presentation-line"></i>
+                                <span class="lista">Análise dos usuários</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="baixo">
+                <div class="frasquinho">
+                    <img src="/public/assets/linha.svg" width="103px" alt="">
+                    <img src="/public/assets/frasquinhoRosa.svg" alt="">
+                    <img src="/public/assets/linha.svg" width="103px" alt="">
+                </div>
+                <div id="divUsu" class="usuario">
+                    <span>NOME USUARIO</span>
+                </div>
+                <div class="exit">
+                    <a href="index.html">
+                        <img src="/public/assets/exit.svg" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="conteudo" id="conteudo">
+            <div class="caixaBuscador">
+                <div class="iptAndIcon">
+                    <input id="iptPesquisa" type="text">
+                    <button onclick="pesquisarDados()">
+                        <img src="../assets/lupacerta.svg" height="20px" alt="">
+                    </button>
+                </div>
+                <span id="divNome">${NOME}</span>
+                <div class="imgA">
+                    <img src="https://i.scdn.co/image/ab6761610000e5eb019e4b48abbc831217ef48e0" height="150px"
+                        width="150px">
+                </div>
+                <div class="musicas">
+                    <span>1°</span>
+                    <span>2°</span>
+                    <span>3°</span>
+                    <span>4°</span>
+                    <span>5°</span>
+                    <span>6°</span>
+                    <span>7°</span>
+                    <span>8°</span>
+                    <span>9°</span>
+                    <span>10°</span>
+                </div>
+                <div class="proxima" id="proxima">
+                    <a href="">
+                        <span>Mais informações</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    // function pesquisarDados(){
+    //     var pesquisa = iptPesquisa.value
+    //     var options = {
+    //         method: 'GET',
+    //         headers: {
+    //     'X-RapidAPI-Key': '9cd0f1a177msh6c6b48b6f0f8f56p1b801djsn40d1eaa84055',
+    //     'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
+    //   },
+    //         mode: 'cors',
+
+    //     }
+    //     fetch(`https://spotify23.p.rapidapi.com/${pesquisa}/?q=%3CREQUIRED%3E&type=multi&offset=0&limit=10&numberOfTopResults=5`, options)
+    //     .then(resposta => {
+    //         resposta.json()
+    //         .then(dados => 
+    //         divNome.innerHTML `${resposta.artists.items[0].data.profile}`
+    //         )
+    //     })
+    // }
+    function pesquisarDados() {
+        var nomePesquisado
+        var link = `https://spotify23.p.rapidapi.com/search/?q=${encodeURIComponent(artistName)}&numberOfTopResults=5`;
+        var options = {
+            method: 'GET',
+            headers: {
+                'X-RapidAPI-Key': '9cd0f1a177msh6c6b48b6f0f8f56p1b801djsn40d1eaa84055',
+                'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
+            }
+        }
+    }
+
+    try {
+        const response = await fetch(link, options);
+        const result = await response.text();
+        console.log(result);
+    } catch (error) {
+        console.error(error);
+    }
+
+</script>
