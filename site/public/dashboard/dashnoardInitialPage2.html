@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard | Wave Lab </title>
     <link rel="icon" href="assets/frascoRosa.png">
-    <link rel="stylesheet" href="/public/css/estiloDash.css">
+    <!-- <link rel="stylesheet" href="/public/css/estiloDash2.css"> -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <script src="/public/vetor.js"></script>
 </head>
@@ -50,7 +50,7 @@
                     <span>NOME USUARIO</span>
                 </div>
                 <div class="exit">
-                    <a href="index.html">
+                    <a href="../index.html">
                         <img src="/public/assets/exit.svg" alt="">
                     </a>
                 </div>
@@ -58,15 +58,23 @@
         </div>
         <div class="conteudo" id="conteudo">
             <div id="caixaBuscador" class="caixaBuscador">
-                
-                <!-- <div class="iptAndIcon">
+                <div class="cimaTudo">
+                    <div class="voltar">
+                        <a href="/public/dashboard/dashnoardInitialPage.html">
+                            <img src="/public/assets/back.svg" height="45px" alt="">
+                        </a>
+                        
+                    </div>
+                    <!-- <div class="iptAndIcon">
                     <input id="iptPesquisa" type="text">
                     <button class="botaoPesquisa" onclick="pesquisarDados()">
                         <img src="../assets/lupacerta.svg" height="20px" alt="">
                     </button>
                 </div> -->
+                </div>
                 <div class="listagem" id="listagem">
-                <!-- <span id="divNome">${NOME}</span>
+                    
+                    <!-- <span id="divNome">${NOME}</span>
                 <div class="imgA">
                     <img src="https://i.scdn.co/image/ab6761610000e5eb019e4b48abbc831217ef48e0" height="150px"
                         width="150px">
@@ -88,6 +96,7 @@
                         <span>Mais informações</span>
                     </a> -->
                 </div>
+                <div class="listagem2" id="listagem2"></div>
             </div>
         </div>
     </div>
@@ -97,9 +106,10 @@
 </html>
 
 <script>
-    
-    window.addEventListener("load", ()=> {
-        pesquisarDados()
+
+    window.addEventListener("load", () => {
+        pesquisarDados(),
+        pesquisarDadosPlaylist()
     })
 
     async function pesquisarDados() {
@@ -109,121 +119,116 @@
         var teste = "post malone"
         // sessionStorage.setItem("nomeArtista", artistName);
         // const dataContainer = document.getElementById('artist-results');
-        listagem.innerHTML = ''; // Limpar dados anteriores
+        // listagem.innerHTML = ''; // Limpar dados anteriores
 
 
-        if(nomes.indexOf(artistName) != -1){
+        if (nomes.indexOf(artistName) != -1) {
 
             var url = `https://spotify23.p.rapidapi.com/search/?q=${encodeURIComponent(artistName)}&type=artist&offset=0&limit=10`;
             var options = {
                 method: 'GET',
                 headers: {
-                    'X-RapidAPI-Key': '9cd0f1a177msh6c6b48b6f0f8f56p1b801djsn40d1eaa84055',
+                    'X-RapidAPI-Key': '315d815d0amsh91dba4ace557d38p128e3ejsnbf37e04ac0ae',
                     'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
                 }
             };
-    
+
             try {
                 const response = await fetch(url, options);
                 const data = await response.json();
-    
+
                 // for (var i = 0; i < 10; i++) {
                 //     console.log(data.tracks.items[i].data.name);
-                    console.log(data);
+                console.log(data);
                 // }
-    
-                listagem.innerHTML = `
+
+                listagem.innerHTML += `
         
         <span id="divNome">${data.artists.items[0].data.profile.name}</span>
-        <div class="imgA">
-          <img src="${data.artists.items[0].data.visuals.avatarImage.sources[0].url}" height="180px" width="180px">
-        </div>`;
-    
-                for (var i = 0; i < 10; i++) {
-                    console.log(data.tracks.items[i].data.name);
-                    listagem.innerHTML += `
-          <div class="musicas">
-            <span>${i + 1}°: ${data.tracks.items[i].data.name}</span>
-          </div>`;
-                }
-    
-                listagem.innerHTML += `
-        <div class="proxima" id="proxima">
-          <a href="">
-            <span>Mais informações</span>
-          </a>
-        </div>`;
-    
-                // console.log(data);
-                // console.log(data.artists.items[0].data.visuals.avatarImage.sources[0].url);
-    
-            } catch (error) {
-                console.error(error);
-            }
-            async function pesquisarDados() {
-            console.log()
-            var artistName = iptPesquisa.value;
-            // const dataContainer = document.getElementById('artist-results');
-            listagem.innerHTML = ''; // Limpar dados anteriores
-    
-            var url = `https://spotify23.p.rapidapi.com/search/?q=${encodeURIComponent(artistName)}&type=artist&offset=0&limit=10`;
-            var options = {
-                method: 'GET',
-                headers: {
-                    'X-RapidAPI-Key': '9cd0f1a177msh6c6b48b6f0f8f56p1b801djsn40d1eaa84055',
-                    'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
-                }
-            };
-    
-            try {
-                const response = await fetch(url, options);
-                const data = await response.json();
-    
-                for (var i = 0; i < 10; i++) {
-                    console.log(data.tracks.items[i].data.name);
-                    console.log(data);
-                }
-    
-                listagem.innerHTML = `
-        
-        <span id="divNome">${data.artists.items[0].data.profile.name}</span>
-        <div class="imgA">
-          <img src="${data.artists.items[0].data.visuals.avatarImage.sources[0].url}" height="150px" width="150px">
-        </div>`;
-    
-                for (var i = 0; i < 10; i++) {
-                    console.log(data.tracks.items[i].data.name);
-                    listagem.innerHTML += `
-          <div class="musicas">
-            <span>${i + 1}°: ${data.tracks.items[i].data.name}</span>
-          </div>`;
-                }
-    
-                listagem.innerHTML += `
-        <div class="proxima" id="proxima">
-          <a href="">
-            <span>Mais informações</span>
-          </a>
-        </div>`;
-    
-                // console.log(data);
-                // console.log(data.artists.items[0].data.visuals.avatarImage.sources[0].url);
-    
-            } catch (error) {
-                console.error(error);
-            }
-            
-    
-    
-        }
-        } else{
-            listagem.innerHTML = `<span>
-                Artista não dispovível na plataforma!   
+        <span>
+                Top 5 álbuns: 
                 </span>`
-        }
+       
+
+                for (var i = 0; i < 5; i++) {
+                    console.log(data.albums.items[i].data.name);
+                    listagem.innerHTML += `
+          <div class="musicas">
+           
+            
+            <span>${i + 1}°: <span class="rosa">${data.albums.items[i].data.name}</span></span>
+            <span>
+            Ano de lançamento: ${data.albums.items[i].data.date.year}
+            </span>
+
+            <span>
+                <a href="${data.albums.items[i].data.uri}">
+                <img src="${data.albums.items[i].data.coverArt.sources[0].url}" height="50px">
+                </a>
+                </span>
+          </div>`;
+                }
+
+
+
+                // console.log(data);
+                // console.log(data.artists.items[0].data.visuals.avatarImage.sources[0].url);
+
+            } catch (error) {
+                console.error(error);
+            }
 
         }
-        
+    }
+    async function pesquisarDadosPlaylist(){
+        console.log()
+        artistName = sessionStorage.nomeArtista
+        var playlist = `This is ${artistName}`
+        // const dataContainer = document.getElementById('artist-results');
+        // listagem.innerHTML = ''; // Limpar dados anteriores
+
+        var url = `https://spotify23.p.rapidapi.com/search/?q=${encodeURIComponent(playlist)}&type=artist&offset=0&limit=10`;
+        var options = {
+            method: 'GET',
+            headers: {
+                'X-RapidAPI-Key': '315d815d0amsh91dba4ace557d38p128e3ejsnbf37e04ac0ae',
+                    'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
+            }
+        };
+
+        try {
+            const response = await fetch(url, options);
+            const data = await response.json();
+
+          console.log(data)
+          listagem2.innerHTML += `
+          <span>
+            <span>
+            Playlist com músicas do artista:
+            </span>
+            <span>
+                <a href="${data.playlists.items[0].data.uri}">
+                    <img src="/public/assets/spotifyRosa.svg">
+                    </a>
+                </span>
+
+            <span>
+          `
+
+        } catch (error) {
+            console.error(error);
+        }
+
+
+
+    }
+
+
+
+    
+
+
+
 
 
 

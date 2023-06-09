@@ -50,7 +50,7 @@
                     <span>NOME USUARIO</span>
                 </div>
                 <div class="exit">
-                    <a href="index.html">
+                    <a href="../index.html">
                         <img src="/public/assets/exit.svg" alt="">
                     </a>
                 </div>
@@ -58,7 +58,7 @@
         </div>
         <div class="conteudo" id="conteudo">
             <div id="caixaBuscador" class="caixaBuscador">
-                
+
                 <div class="iptAndIcon">
                     <input id="iptPesquisa" type="text">
                     <button class="botaoPesquisa" onclick="pesquisarDados()">
@@ -66,7 +66,7 @@
                     </button>
                 </div>
                 <div class="listagem" id="listagem">
-               <!-- <span id="divNome">${NOME}</span>
+                    <!-- <span id="divNome">${NOME}</span>
                 <div class="imgA">
                     <img src="https://i.scdn.co/image/ab6761610000e5eb019e4b48abbc831217ef48e0" height="150px"
                         width="150px">
@@ -83,7 +83,7 @@
                     <span>9°</span>
                     <span>10°</span>
                 </div> -->
-                <!-- <div class="proxima" id="proxima">
+                    <!-- <div class="proxima" id="proxima">
                     <a href="dashnoardInitialPage2.html">
                         <span>Mais informações</span>
                     </a> -->
@@ -97,7 +97,7 @@
 </html>
 
 <script>
-    
+
 
     async function pesquisarDados() {
 
@@ -108,34 +108,34 @@
         listagem.innerHTML = ''; // Limpar dados anteriores
 
 
-        if(nomes.indexOf(artistName) != -1){
+        if (nomes.indexOf(artistName) != -1) {
             console.log(artistName)
 
             var url = `https://spotify23.p.rapidapi.com/search/?q=${encodeURIComponent(artistName)}&type=artist&offset=0&limit=10`;
             var options = {
                 method: 'GET',
                 headers: {
-                    'X-RapidAPI-Key': '9cd0f1a177msh6c6b48b6f0f8f56p1b801djsn40d1eaa84055',
+                    'X-RapidAPI-Key': '315d815d0amsh91dba4ace557d38p128e3ejsnbf37e04ac0ae',
                     'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
                 }
             };
-    
+
             try {
                 const response = await fetch(url, options);
                 const data = await response.json();
-    
+
                 // for (var i = 0; i < 10; i++) {
                 //     console.log(data.tracks.items[i].data.name);
-                    console.log(data);
+                console.log(data);
                 // }
-    
+
                 listagem.innerHTML = `
         
         <span id="divNome">${data.artists.items[0].data.profile.name}</span>
         <div class="imgA">
           <img src="${data.artists.items[0].data.visuals.avatarImage.sources[0].url}" height="180px" width="180px">
         </div>`;
-    
+
                 for (var i = 0; i < 10; i++) {
                     console.log(data.tracks.items[i].data.name);
                     listagem.innerHTML += `
@@ -143,84 +143,29 @@
             <span>${i + 1}°: ${data.tracks.items[i].data.name}</span>
           </div>`;
                 }
-    
+
                 listagem.innerHTML += `
         <div class="proxima" id="proxima">
             <a href="dashnoardInitialPage2.html">
             <span>Mais informações</span>
           </a>
         </div>`;
-    
+
                 // console.log(data);
                 // console.log(data.artists.items[0].data.visuals.avatarImage.sources[0].url);
-    
+
             } catch (error) {
                 console.error(error);
             }
-            async function pesquisarDados() {
-            console.log()
-            var artistName = iptPesquisa.value;
-            // const dataContainer = document.getElementById('artist-results');
-            listagem.innerHTML = ''; // Limpar dados anteriores
-    
-            var url = `https://spotify23.p.rapidapi.com/search/?q=${encodeURIComponent(artistName)}&type=artist&offset=0&limit=10`;
-            var options = {
-                method: 'GET',
-                headers: {
-                    'X-RapidAPI-Key': '9cd0f1a177msh6c6b48b6f0f8f56p1b801djsn40d1eaa84055',
-                    'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
-                }
-            };
-    
-            try {
-                const response = await fetch(url, options);
-                const data = await response.json();
-    
-                for (var i = 0; i < 10; i++) {
-                    console.log(data.tracks.items[i].data.name);
-                    console.log(data);
-                }
-    
-                listagem.innerHTML = `
-        
-        <span id="divNome">${data.artists.items[0].data.profile.name}</span>
-        <div class="imgA">
-          <img src="${data.artists.items[0].data.visuals.avatarImage.sources[0].url}" height="150px" width="150px">
-        </div>`;
-    
-                for (var i = 0; i < 10; i++) {
-                    console.log(data.tracks.items[i].data.name);
-                    listagem.innerHTML += `
-          <div class="musicas">
-            <span>${i + 1}°: ${data.tracks.items[i].data.name}</span>
-          </div>`;
-                }
-    
-                listagem.innerHTML += `
-        <div class="proxima" id="proxima">
-          <a href="">
-            <span>Mais informações</span>
-          </a>
-        </div>`;
-    
-                // console.log(data);
-                // console.log(data.artists.items[0].data.visuals.avatarImage.sources[0].url);
-    
-            } catch (error) {
-                console.error(error);
-            }
-            
-    
-    
-        }
-        } else{
+
+        } else {
             listagem.innerHTML = `<span>
                 Artista não dispovível na plataforma!   
                 </span>`
         }
 
-        }
-        
+    }
+
 
 
 

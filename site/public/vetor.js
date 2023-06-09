@@ -177,6 +177,8 @@ var nomes = [
      "travis scott",
      "lil uzi",
      "liluzi",
+     "21 savage",
+     "21savage"
      
 
     
