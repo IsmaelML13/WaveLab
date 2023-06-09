@@ -195,7 +195,7 @@ ul {
 
 .imgA img{
     border-radius: 20px;
-    border: azure 8px solid;
+    border: azure 3px solid;
 }
 
 .proxima a{
@@ -213,6 +213,27 @@ ul {
     width: 200px;
     height: 40px;
     background: #FF003D;
-    border-radius: 10px;
+    border-radius: 8px;
     color: azure;
+}
+
+.listagem{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.botaoPesquisa{
+    display: flex;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.iptAndIcon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: -10px;
 }

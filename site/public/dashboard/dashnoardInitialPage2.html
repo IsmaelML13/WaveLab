@@ -59,14 +59,14 @@
         <div class="conteudo" id="conteudo">
             <div id="caixaBuscador" class="caixaBuscador">
                 
-                <div class="iptAndIcon">
+                <!-- <div class="iptAndIcon">
                     <input id="iptPesquisa" type="text">
                     <button class="botaoPesquisa" onclick="pesquisarDados()">
                         <img src="../assets/lupacerta.svg" height="20px" alt="">
                     </button>
-                </div>
+                </div> -->
                 <div class="listagem" id="listagem">
-               <!-- <span id="divNome">${NOME}</span>
+                <!-- <span id="divNome">${NOME}</span>
                 <div class="imgA">
                     <img src="https://i.scdn.co/image/ab6761610000e5eb019e4b48abbc831217ef48e0" height="150px"
                         width="150px">
@@ -82,9 +82,9 @@
                     <span>8°</span>
                     <span>9°</span>
                     <span>10°</span>
-                </div> -->
-                <!-- <div class="proxima" id="proxima">
-                    <a href="dashnoardInitialPage2.html">
+                </div>
+                <div class="proxima" id="proxima">
+                    <a href="">
                         <span>Mais informações</span>
                     </a> -->
                 </div>
@@ -98,18 +98,21 @@
 
 <script>
     
+    window.addEventListener("load", ()=> {
+        pesquisarDados()
+    })
 
     async function pesquisarDados() {
 
         console.log()
-        var artistName = iptPesquisa.value.toLowerCase()
-        sessionStorage.setItem("nomeArtista", artistName);
+        artistName = sessionStorage.nomeArtista;
+        var teste = "post malone"
+        // sessionStorage.setItem("nomeArtista", artistName);
         // const dataContainer = document.getElementById('artist-results');
         listagem.innerHTML = ''; // Limpar dados anteriores
 
 
         if(nomes.indexOf(artistName) != -1){
-            console.log(artistName)
 
             var url = `https://spotify23.p.rapidapi.com/search/?q=${encodeURIComponent(artistName)}&type=artist&offset=0&limit=10`;
             var options = {
@@ -146,7 +149,7 @@
     
                 listagem.innerHTML += `
         <div class="proxima" id="proxima">
-            <a href="dashnoardInitialPage2.html">
+          <a href="">
             <span>Mais informações</span>
           </a>
         </div>`;
