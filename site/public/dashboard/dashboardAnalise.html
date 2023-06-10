@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard | Wave Lab </title>
     <link rel="icon" href="assets/frascoRosa.png">
-    <link rel="stylesheet" href="/public/css/estiloAnalise.css">
+    <link rel="stylesheet" href="../css/estiloAnalise.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
@@ -17,24 +17,24 @@
     <div class="tela">
         <div class="navbar">
             <div class="cima">
-                <div class="img"><img src="/public/assets/Loog preta.svg" height="125px"></div>
+                <div class="img"><img src="../assets/Loog preta.svg" height="125px"></div>
                 <div class="camposP">
                     <ul class="listaWave">
                         <li class="lista">
-                            <a href="/public/dashboard/dashnoardInitialPage.html">
-                                <i class="uil uil-create-dashboard"></i>
+                            <a href="../dashboard/dashnoardInitialPage.html">
+                                <!-- <i class="uil uil-create-dashboard"></i> -->
                                 <span class="lista">Buscador</span>
                             </a>
                         </li>
                         <li class="lista">
                             <a href="estatisticaPage.html">
-                                <i class="uil uil-presentation-line"></i>
+                                <!-- <i class="uil uil-presentation-line"></i> -->
                                 <span class="lista">Playlist</span>
                             </a>
                         </li>
                         <li class="agora">
-                            <a href="/public/dashboard/dashboardAnalise.html">
-                                <i class="uil uil-presentation-line"></i>
+                            <a href="../dashboard/dashboardAnalise.html">
+                                <!-- <i class="uil uil-presentation-line"></i> -->
                                 <span class="lista">Análise dos usuários</span>
                             </a>
                         </li>
@@ -52,43 +52,46 @@
             </div>
             <div class="baixo">
                 <div class="frasquinho">
-                    <img src="/public/assets/linha.svg" width="103px" alt="">
-                    <img src="/public/assets/frasquinhoRosa.svg" alt="">
-                    <img src="/public/assets/linha.svg" width="103px" alt="">
+                    <img src="../assets/linha.svg" width="103px" alt="">
+                    <img src="../assets/frasquinhoRosa.svg" alt="">
+                    <img src="../assets/linha.svg" width="103px" alt="">
                 </div>
                 <div id="divUsu" class="usuario">
-                    <span>NOME USUARIO</span>
+                    <span id="nomeUsu"></span>
                 </div>
                 <div class="exit">
                     <a href="../index.html">
-                        <img src="/public/assets/exit.svg" alt="">
+                        <img src="../assets/exit.svg" alt="">
                     </a>
                 </div>
             </div>
         </div>
         <div class="conteudo" id="conteudo">
-            <div id="graficos">
-                <div id="grafico1" class="">
-                    <h3 class="tituloGraficos">
-                        <span id="tituloAquario1">123</span>
-                    </h3>
-                    <div class="graph">
-                        <canvas id="myChartCanvas1"></canvas>
-                    </div>
-                    <div class="label-captura">
-                        <p id="avisoCaptura1" style="color: white"></p>
-                    </div>
-                </div>
 
-                <div id="grafico2" class="">
-                    <h3 class="tituloGraficos">
-                        <span id="tituloAquario2">123</span>
-                    </h3>
-                    <div class="graph">
-                        <canvas id="myChartCanvas2"></canvas>
+            <div id="caixaBuscador" class="caixaBuscador">
+                <div id="graficos">
+                    <div id="grafico1" class="">
+                        <h3 class="tituloGraficos">
+                            <span id="tituloAquario1">Faixa de idade dos usuarios</span>
+                        </h3>
+                        <div class="graph">
+                            <canvas id="myChartCanvas1"></canvas>
+                        </div>
+                        <div class="label-captura">
+                            <p id="avisoCaptura1" style="color: white"></p>
+                        </div>
                     </div>
-                    <div class="label-captura">
-                        <p id="avisoCaptura2" style="color: white"></p>
+
+                    <div id="grafico2" class="">
+                        <h3 class="tituloGraficos">
+                            <span id="tituloAquario2">Usuarios em cada região do país</span>
+                        </h3>
+                        <div class="graph">
+                            <canvas id="myChartCanvas2"></canvas>
+                        </div>
+                        <div class="label-captura">
+                            <p id="avisoCaptura2" style="color: white"></p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -97,7 +100,224 @@
 
 </html>
 <script>
-    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    nomeUsu.innerHTML = "Salve, " + sessionStorage.NOME_USUARIO + "!";
 
-  
+    window.onload = function obterDados() {
+        fetch("/medidas/dadoRegiaoNordeste", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+
+        })
+            .then(function (dadoRegiaoNordeste) { //nordeste
+                if (dadoRegiaoNordeste.ok) {
+                    fetch("/medidas/dadoRegiaoNorte", {
+                        method: "GET",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+
+                    }).then(function (dadoRegiaoNorte) { // norte
+                        if (dadoRegiaoNorte.ok) {
+                            fetch("/medidas/dadoRegiaoSudeste", {
+                                method: "GET",
+                                headers: {
+                                    "Content-Type": "application/json",
+                                },
+                            }).then(function (dadoRegiaoSudeste) { // sudeste
+                                if (dadoRegiaoSudeste.ok) {
+                                    fetch("/medidas/dadoRegiaoSul", {
+                                        method: "GET",
+                                        headers: {
+                                            "Content-Type": "application/json",
+                                        },
+                                    }).then(function (dadoRegiaoSul) { // sul
+                                        if (dadoRegiaoSul.ok) {
+                                            fetch("/medidas/dadoRegiaoCentroOeste", {
+                                                method: "GET",
+                                                headers: {
+                                                    "Content-Type": "application/json",
+                                                },
+                                            }).then((dadoRegiaoCentroOeste) => { // centro oeste
+                                                dadoRegiaoCentroOeste.json().then((dadoRegiaoCentroOeste) => {
+                                                    dadoRegiaoSul.json().then((dadoRegiaoSul) => {
+                                                        dadoRegiaoSudeste.json().then((dadoRegiaoSudeste) => {
+                                                            dadoRegiaoNorte.json().then((dadoRegiaoNorte) => {
+                                                                dadoRegiaoNordeste.json().then((dadoRegiaoNordeste) => {
+                                                                    console.log(dadoRegiaoNordeste),
+                                                                        console.log(dadoRegiaoCentroOeste),
+                                                                        console.log(dadoRegiaoNorte),
+                                                                        console.log(dadoRegiaoSudeste),
+                                                                        console.log(dadoRegiaoSul),
+
+                                                                        new Chart(document.getElementById('myChartCanvas2'), {
+                                                                            type: 'bar',
+                                                                            data: {
+                                                                                labels: [""],
+                                                                                datasets: [{
+                                                                                    label: 'Sudeste',
+                                                                                    data: [`${dadoRegiaoSudeste[0].total}`],
+                                                                                    borderWidth: 9
+
+                                                                                },
+                                                                                {
+
+                                                                                    label: 'Nordeste',
+                                                                                    data: [`${dadoRegiaoNordeste[0].total}`],
+                                                                                    borderWidth: 9
+                                                                                },
+                                                                                {
+
+                                                                                    label: 'Norte',
+                                                                                    data: [`${dadoRegiaoNorte[0].total}`],
+                                                                                    borderWidth: 9
+                                                                                },
+                                                                                {
+
+                                                                                    label: 'Sul',
+                                                                                    data: [`${dadoRegiaoSul[0].total}`],
+                                                                                    borderWidth: 9
+                                                                                },
+                                                                                {
+
+                                                                                    label: 'Centro-Oeste',
+                                                                                    data: [`${dadoRegiaoCentroOeste[0].total}`],
+                                                                                    borderWidth: 9
+                                                                                }
+
+                                                                                ]
+                                                                            },
+
+                                                                            options: {
+                                                                                scales: {
+                                                                                    y: {
+                                                                                        beginAtZero: true
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        });
+
+
+                                                                })
+                                                            })
+                                                        })
+                                                    })
+                                                })
+
+
+                                            })
+                                        }
+                                    })
+                                }
+                            })
+                        }
+                    })
+                }
+            })
+
+    }
+
+    // const ctxLine = document.getElementById('myChartCanvas1');
+
+    // new Chart(document.getElementById('myChartCanvas1'), {
+    //     type: 'bar',
+    //     data: {
+    //         labels: [""],
+    //         datasets: [{
+    //             label: 'Sudeste',
+    //             data: [80],
+    //             borderWidth: 9
+
+    //         },
+    //         {
+
+    //             label: 'Nordeste',
+    //             data: [30],
+    //             borderWidth: 9
+    //         },
+    //         {
+
+    //             label: 'Norte',
+    //             data: [30],
+    //             borderWidth: 9
+    //         },
+    //         {
+
+    //             label: 'Sul',
+    //             data: [30],
+    //             borderWidth: 9
+    //         },
+    //         {
+
+    //             label: 'Centro-Oeste',
+    //             data: [30],
+    //             borderWidth: 9
+    //         }
+
+    //         ]
+    //     },
+
+    //     options: {
+    //         scales: {
+    //             y: {
+    //                 beginAtZero: true
+    //             }
+    //         }
+    //     }
+    // });
+
+    // const ctxBar = document.getElementById('myChartCanvas2');
+
+    // new Chart(ctxBar, {
+    //     type: 'bar',
+    //     data: {
+    //         labels: [""],
+    //         datasets: [{
+    //             label: 'Menores de 18',
+    //             data: [22, 24, 27, 23, 20, 18],
+    //             borderWidth: 1
+    //         },
+    //         {
+    //             label: 'Entre 18 e 25 anos',
+    //             data: [90, 89, 93, 87, 88, 82],
+    //             borderWidth: 1
+
+    //         }, {
+    //             label: 'Entre 26 e 35 anos',
+    //             data: [90, 89, 93, 87, 88, 82],
+    //             borderWidth: 1
+
+    //         }, {
+    //             label: 'Entre 36 e 45 anos',
+    //             data: [90, 89, 93, 87, 88, 82],
+    //             borderWidth: 1
+
+    //         }, {
+    //             label: 'Entre 46 e 60 anos',
+    //             data: [90, 89, 93, 87, 88, 82],
+    //             borderWidth: 1
+
+    //         }, {
+    //             label: 'Maiores de 60 anos',
+    //             data: [90, 89, 93, 87, 88, 82],
+    //             borderWidth: 1
+
+    //         }
+
+    //         ]
+    //     },
+
+    //     options: {
+    //         scales: {
+    //             y: {
+    //                 beginAtZero: true
+    //             }
+    //         }
+    //     }
+    // });
+
+    // window.addEventListener("load", () => {
+    //     obterDados();
+    // });
 </script>

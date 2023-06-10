@@ -100,7 +100,7 @@
     var mostrarDados = (resultado) => {
         for (const campo in resultado) {
             if (document.getElementById(campo)) {
-                document.querySelector("#"+campo).value = resultado[campo]
+                document.querySelector("#" + campo).value = resultado[campo]
                 // const element = object[campo];
 
             }
@@ -118,7 +118,7 @@
         fetch(`https://viacep.com.br/ws/${pesquisa}/json/`, options)
             .then(resposta => {
                 resposta.json()
-                .then(dados => mostrarDados(dados))
+                    .then(dados => mostrarDados(dados))
             })
             .catch(e => console.log("Erro." + e, message))
     })
@@ -130,7 +130,7 @@
 
     function cadastrarEnd() {
 
-        if(complemento.value == ""){
+        if (complemento.value == "") {
             complemento.value == "null"
         }
         // aguardar();
@@ -176,16 +176,34 @@
             })
         }).then(function (resposta) {
 
-            console.log("resposta: ", resposta);
+            console.log("resposta: ", resposta)
 
             if (resposta.ok) {
+                fetch("/usuariosEnd/ultimaEmp", {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                })
+                    .then((res) => {
+                        console.log(res);
+                        res.json().then(jsonArray => {
+                            console.log(jsonArray);
+                            if (jsonArray.length > 0 && jsonArray[0].idEndereco) {
+                                sessionStorage.setItem("ULTIMA_ID", jsonArray[0].idEndereco);
+                                window.location = "cadastro.html";
+                            } else {
+                                throw new Error("O JSON retornado está vazio ou não possui a propriedade 'idEndereco' no índice 0.");
+                            }
+                        })
+                    })
+
                 // cardErro.style.display = "block";
 
-                // mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+                // mensagem_erro.innerHTML = "Redirecionando para proxima etapa...";
 
                 // setTimeout(() => {
-                    window.location = "cadastro.html";
-                    // window.location.href = 'outra-pagina.html';
+                // window.location = "cadastro.html";
                 // }, "2000")
 
                 // limparFormulario();

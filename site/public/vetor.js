@@ -178,7 +178,8 @@ var nomes = [
      "lil uzi",
      "liluzi",
      "21 savage",
-     "21savage"
+     "21savage",
+     "offset"
      
 
     

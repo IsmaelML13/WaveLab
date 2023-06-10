@@ -16,6 +16,10 @@ router.post("/cadastrarEnd", function (req, res) {
     usuarioControllerEnd.cadastrarEnd(req, res);
 })
 
+router.get("/ultimaEmp", function (req, res) {
+    usuarioControllerEnd.ultimaEmp(req, res);
+});
+
 // router.post("/autenticar", function (req, res) {
 //     usuarioControllerEnd.entrar(req, res);
 // });

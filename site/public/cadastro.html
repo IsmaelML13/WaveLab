@@ -78,6 +78,7 @@ function cadastrar() {
     var idadeVar = idade_input.value;
     var senhaVar = senha_input.value;
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
+    var fkEndreco = sessionStorage.getItem("ULTIMA_ID");
 
     // if (nomeVar == "" || sobrenomeVar == "" || emailVar == "" || idadeVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
     //     cardErro.style.display = "block"
@@ -103,7 +104,8 @@ function cadastrar() {
             sobrenomeServer: sobrenomeVar,
             emailServer: emailVar,
             idadeServer: idadeVar,
-            senhaServer: senhaVar
+            senhaServer: senhaVar, 
+            fkEnderecoServer: fkEndreco
         })
     }).then(function (resposta) {
 
@@ -115,7 +117,7 @@ function cadastrar() {
             // mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
 
             setTimeout(() => {
-                sessionStorage.ID_EMPRESA = json.idEndereco;
+                // sessionStorage.ID_EMPRESA = json.idEndereco;
                 window.location = "index.html";
                 // window.location.href = 'outra-pagina.html';
             }, "2000")
