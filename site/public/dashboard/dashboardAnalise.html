@@ -9,6 +9,8 @@
     <link rel="icon" href="assets/frascoRosa.png">
     <link rel="stylesheet" href="/public/css/estiloAnalise.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
 </head>
 
 <body>
@@ -18,8 +20,8 @@
                 <div class="img"><img src="/public/assets/Loog preta.svg" height="125px"></div>
                 <div class="camposP">
                     <ul class="listaWave">
-                        <li class="agora">
-                            <a href="dashboardPage.html">
+                        <li class="lista">
+                            <a href="/public/dashboard/dashnoardInitialPage.html">
                                 <i class="uil uil-create-dashboard"></i>
                                 <span class="lista">Buscador</span>
                             </a>
@@ -30,8 +32,8 @@
                                 <span class="lista">Playlist</span>
                             </a>
                         </li>
-                        <li class="lista">
-                            <a href="estatisticaPage.html">
+                        <li class="agora">
+                            <a href="/public/dashboard/dashboardAnalise.html">
                                 <i class="uil uil-presentation-line"></i>
                                 <span class="lista">Análise dos usuários</span>
                             </a>
@@ -65,9 +67,37 @@
             </div>
         </div>
         <div class="conteudo" id="conteudo">
-            
+            <div id="graficos">
+                <div id="grafico1" class="">
+                    <h3 class="tituloGraficos">
+                        <span id="tituloAquario1">123</span>
+                    </h3>
+                    <div class="graph">
+                        <canvas id="myChartCanvas1"></canvas>
+                    </div>
+                    <div class="label-captura">
+                        <p id="avisoCaptura1" style="color: white"></p>
+                    </div>
+                </div>
+
+                <div id="grafico2" class="">
+                    <h3 class="tituloGraficos">
+                        <span id="tituloAquario2">123</span>
+                    </h3>
+                    <div class="graph">
+                        <canvas id="myChartCanvas2"></canvas>
+                    </div>
+                    <div class="label-captura">
+                        <p id="avisoCaptura2" style="color: white"></p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
 </body>
 
 </html>
+<script>
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+  
+</script>

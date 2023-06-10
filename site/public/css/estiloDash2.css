@@ -252,7 +252,8 @@ ul {
     color: #FF003D;
 }
 
-.listagem2{
+.listagem2 span{
     display: flex;
     flex-direction: column;
+    gap: 8px;
 }
