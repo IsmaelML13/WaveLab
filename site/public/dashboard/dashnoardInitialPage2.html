@@ -26,9 +26,9 @@
                             </a>
                         </li>
                         <li class="lista">
-                            <a href="estatisticaPage.html">
+                            <a href="dashboardChat.html">
                                 <i class="uil uil-presentation-line"></i>
-                                <span class="lista">Playlist</span>
+                                <span class="lista">Chat</span>
                             </a>
                         </li>
                         <li class="lista">
@@ -144,8 +144,8 @@
 
                 listagem.innerHTML += `
         
-        <span id="divNome">${data.artists.items[0].data.profile.name}</span>
-        <span>
+        <span class="titulo" id="divNome"> ${data.artists.items[0].data.profile.name}</span>
+        <span class="sub">
                 Top 5 álbuns: 
                 </span>`
        
@@ -156,14 +156,13 @@
           <div class="musicas">
            
             
-            <span>${i + 1}°: <span class="rosa">${data.albums.items[i].data.name}</span></span>
-            <span>
+           <span> <span class="rosa">${i + 1}°: </span> <span>${data.albums.items[i].data.name}</span></span>
             Ano de lançamento: ${data.albums.items[i].data.date.year}
             </span>
 
             <span>
                 <a href="${data.albums.items[i].data.uri}">
-                <img src="${data.albums.items[i].data.coverArt.sources[0].url}" height="50px">
+                <img src="${data.albums.items[i].data.coverArt.sources[0].url}" height="75px">
                 </a>
                 </span>
           </div>`;
@@ -203,12 +202,12 @@
           console.log(data)
           listagem2.innerHTML += `
           <span>
-            <span>
+            <span class="letra">
             Playlist com músicas do artista:
             </span>
             <span>
                 <a href="${data.playlists.items[0].data.uri}">
-                    <img src="/public/assets/spotifyRosa.svg">
+                    <img src="../assets/spotifyRosa.svg">
                     </a>
                 </span>
 

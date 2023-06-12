@@ -125,6 +125,103 @@ function dadoRegiaoCentroOeste(req, res) {
     });
 }
 
+function dados18(req, res) {
+    console.log(`Recuperando medidas em tempo real`);
+
+    medidaModel.dados18().then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+function dados1825(req, res) {
+    console.log(`Recuperando medidas em tempo real`);
+
+    medidaModel.dados1825().then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+function dados2635(req, res) {
+    console.log(`Recuperando medidas em tempo real`);
+
+    medidaModel.dados2635().then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+function dados3645(req, res) {
+    console.log(`Recuperando medidas em tempo real`);
+
+    medidaModel.dados3645().then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+function dados4660(req, res) {
+    console.log(`Recuperando medidas em tempo real`);
+
+    medidaModel.dados4660().then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+function dados60(req, res) {
+    console.log(`Recuperando medidas em tempo real`);
+
+    medidaModel.dados60().then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+
 module.exports = {
     // buscarUltimasMedidas,
     // buscarMedidasEmTempoReal,
@@ -132,7 +229,15 @@ module.exports = {
     dadoRegiaoNorte,
     dadoRegiaoSudeste,
     dadoRegiaoSul,
-    dadoRegiaoCentroOeste
+    dadoRegiaoCentroOeste,
+    dados18,
+    dados1825,
+    dados2635,
+    dados3645,
+    dados4660,
+    dados60
+
+
 
 
 

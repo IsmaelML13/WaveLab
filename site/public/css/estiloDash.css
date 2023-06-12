@@ -176,9 +176,10 @@ ul {
     box-shadow: 8px 8px 4px rgba(0, 0, 0, 0.25);
     border-radius: 56px;
     align-items: center;
-    justify-content: center;
+    /* justify-content: center; */
     color: azure;
     font-weight: 900;
+    padding: 30px;
 }
 
 .caixaBuscador span{
@@ -237,3 +238,8 @@ ul {
     justify-content: center;
     gap: -10px;
 }
+
+.titulo{
+    font-size: 40px;
+}
+

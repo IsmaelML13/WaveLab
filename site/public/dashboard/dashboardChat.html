@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Wave Lab </title>
+    <link rel="icon" href="assets/frascoRosa.png">
+    <link rel="stylesheet" href="../css/estiloPlaylist.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"> -->
+</head>
+
+<body>
+    <div class="tela">
+        <div class="navbar">
+            <div class="cima">
+                <div class="img"><img src="../assets/Loog preta.svg" height="125px"></div>
+                <div class="camposP">
+                    <ul class="listaWave">
+                        <li class="lista">
+                            <a href="../dashboard/dashnoardInitialPage.html">
+                                <!-- <i class="uil uil-create-dashboard"></i> -->
+                                <span class="lista">Buscador</span>
+                            </a>
+                        </li>
+                        <li class="agora">
+                            <a href="../dashboard/dashboardChat.html">
+                                <!-- <i class="uil uil-presentation-line"></i> -->
+                                <span class="lista">Chat</span>
+                            </a>
+                        </li>
+                        <li class="lista">
+                            <a href="../dashboard/dashboardAnalise.html">
+                                <!-- <i class="uil uil-presentation-line"></i> -->
+                                <span class="lista">Análise dos usuários</span>
+                            </a>
+                        </li>
+                        <!-- <li class="agora">
+                        <a class="agora" href="">Buscador</a>
+                    </li>
+                    <li class="agora">
+                        <a href="">Playlist</a>
+                    </li>
+                    <li class="agora">
+                        <a href="">Análise dos usuários</a>
+                    </li> -->
+                    </ul>
+                </div>
+            </div>
+            <div class="baixo">
+                <div class="frasquinho">
+                    <img src="../assets/linha.svg" width="103px" alt="">
+                    <img src="../assets/frasquinhoRosa.svg" alt="">
+                    <img src="../assets/linha.svg" width="103px" alt="">
+                </div>
+                <div id="divUsu" class="usuario">
+                    <span id="nomeUsu"></span>
+                </div>
+                <div class="exit">
+                    <a href="../index.html">
+                        <img src="../assets/exit.svg" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="conteudo" id="conteudo">
+            <div class="caixaBuscador">
+                <div class="cabecalho" id="cabecalho">
+                    <span class="titulo">Entre na conversa também!</span>
+                    <div class="iptIcon" id="iptIcon">
+                        <input id="amor" type="text">
+                        <button id="enviar" class="enviar" onclick="enviar()">
+                            <img src="../assets/sendIcon.svg" height="35px" alt="">
+                        </button>
+                    </div>
+                    <span class="transparente">
+                        amovc
+                    </span>
+                </div>
+                <div class="msgs" id="msgs">
+                    <!-- <div class="nomeHora" id="nomeHora">
+                        <span class="nomeMsg">NOME</span>
+                        <div class="iconTime">
+                            <img src="/public/assets/clockIcon.svg" height="15px" alt="">
+                            <span>00:00</span>
+                        </div>
+                    </div>
+                    <div class="ritmoAgressivo">
+                        <span>bla bla bla </span>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    nomeUsu.innerHTML = "Salve, " + sessionStorage.NOME_USUARIO + "!";
+
+    
+    
+    function loadComments() {
+        // msgs.innerHTML = ``
+
+        fetch("/comments/load", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            },
+        }).then((load) => {
+            load.json().then((load) => {
+                console.log(load);
+                // for (var i = 0; i < load.length; i++) {
+                    
+                    msgs.innerHTML = `<div class="segurandoTudo"><div class="nomeHora" id="nomeHora">
+                        <span class="nomeMsg">${load[0].nome}</span>
+                        <div class="iconTime">
+                            <img src="../assets/clockIcon.svg" height="15px" alt="">
+                            <span>${load[0].hora}</span>
+                        </div>
+                    </div>
+                    <div class="ritmoAgressivo">
+                        <span>${load[0].mensagem}</span>
+                        </div>
+                        </div>
+                        
+                        <div class="segurandoTudo"><div class="nomeHora" id="nomeHora">
+                        <span class="nomeMsg">${load[1].nome}</span>
+                        <div class="iconTime">
+                            <img src="../assets/clockIcon.svg" height="15px" alt="">
+                            <span>${load[1].hora}</span>
+                        </div>
+                    </div>
+                    <div class="ritmoAgressivo">
+                        <span>${load[1].mensagem}</span>
+                        </div>
+                        </div>
+                        
+                        <div class="segurandoTudo"><div class="nomeHora" id="nomeHora">
+                        <span class="nomeMsg">${load[2].nome}</span>
+                        <div class="iconTime">
+                            <img src="../assets/clockIcon.svg" height="15px" alt="">
+                            <span>${load[2].hora}</span>
+                        </div>
+                    </div>
+                    <div class="ritmoAgressivo">
+                        <span>${load[2].mensagem}</span>
+                        </div>
+                        </div>
+
+                        <div class="segurandoTudo"><div class="nomeHora" id="nomeHora">
+                        <span class="nomeMsg">${load[3].nome}</span>
+                        <div class="iconTime">
+                            <img src="../assets/clockIcon.svg" height="15px" alt="">
+                            <span>${load[3].hora}</span>
+                        </div>
+                    </div>
+                    <div class="ritmoAgressivo">
+                        <span>${load[3].mensagem}</span>
+                        </div>
+                        </div>
+
+                        <div class="segurandoTudo"><div class="nomeHora" id="nomeHora">
+                        <span class="nomeMsg">${load[4].nome}</span>
+                        <div class="iconTime">
+                            <img src="../assets/clockIcon.svg" height="15px" alt="">
+                            <span>${load[4].hora}</span>
+                        </div>
+                    </div>
+                    <div class="ritmoAgressivo">
+                        <span>${load[4].mensagem}</span>
+                        </div>
+                        </div>
+
+                        <div class="segurandoTudo"><div class="nomeHora" id="nomeHora">
+                        <span class="nomeMsg">${load[5].nome}</span>
+                        <div class="iconTime">
+                            <img src="../assets/clockIcon.svg" height="15px" alt="">
+                            <span>${load[5].hora}</span>
+                        </div>
+                    </div>
+                    <div class="ritmoAgressivo">
+                        <span>${load[5].mensagem}</span>
+                        </div>
+                        </div>
+
+
+                        <div class="segurandoTudo"><div class="nomeHora" id="nomeHora">
+                        <span class="nomeMsg">${load[6].nome}</span>
+                        <div class="iconTime">
+                            <img src="../assets/clockIcon.svg" height="15px" alt="">
+                            <span>${load[6].hora}</span>
+                        </div>
+                    </div>
+                    <div class="ritmoAgressivo">
+                        <span>${load[6].mensagem}</span>
+                        </div>
+                        </div>
+
+                        <div class="segurandoTudo"><div class="nomeHora" id="nomeHora">
+                        <span class="nomeMsg">${load[7].nome}</span>
+                        <div class="iconTime">
+                            <img src="../assets/clockIcon.svg" height="15px" alt="">
+                            <span>${load[7].hora}</span>
+                        </div>
+                    </div>
+                    <div class="ritmoAgressivo">
+                        <span>${load[7].mensagem}</span>
+                        </div>
+                        </div>
+                        
+
+                        `
+
+                    // }
+                })
+            })
+        }
+
+    function enviar() {
+
+        var comentarioVar = amor.value
+        var fkVar = sessionStorage.getItem('ID_USUARIO');
+        console.log(fkVar)
+        
+        fetch("/comments/enviar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                comentarioServer: comentarioVar,
+                fkServer: fkVar
+            })
+        }).then(function (enviar) {
+            if (enviar.ok) {
+                setTimeout(function () {
+                    console.log("enviou");
+                    loadComments(); // Chamar a função loadComments após o envio bem-sucedido
+                });
+            } else {
+                throw ("Houve um erro ao tentar enviar o comentário!");
+            }
+        }).catch(function (enviar) {
+            console.log(`#ERRO: ${enviar}`);
+            // finalizarAguardar();
+        });
+        
+        return false;
+    }
+    
+    setInterval(loadComments, 1000);
+
+    window.onload = function() {
+        loadComments();
+    };
+    
+</script>

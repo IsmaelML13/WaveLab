@@ -179,7 +179,23 @@ ul {
     justify-content: center;
     color: azure;
     font-weight: 900;
+    overflow-y: auto;
+    gap: 40px;
+    padding: 30px;
 }
+
+#caixaBuscador::-webkit-scrollbar {
+    width: 10px; /* Largura da barra de rolagem */
+  }
+
+  #caixaBuscador::-webkit-scrollbar-track {
+    background-color: transparent; /* Cor de fundo da barra de rolagem */
+  }
+
+  #caixaBuscador::-webkit-scrollbar-thumb {
+    background-color: transparent; /* Cor do polegar (a parte móvel da barra de rolagem) */
+  }
+
 
 .caixaBuscador span{
     display: flex;
@@ -256,4 +272,18 @@ ul {
     display: flex;
     flex-direction: column;
     gap: 8px;
+}
+
+.titulo{
+    font-size: 40px;
+    color: #FF003D;
+}
+
+
+.sub{
+    font-size:27.5px;
+}
+
+.letra{
+    font-size: 25px;
 }

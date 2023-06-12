@@ -6,11 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>AquaTech | Login</title>
+    <title>Wave Lab | Login</title>
 
     <script src="./js/funcoes.js"></script>
 
-    <link rel="icon" href="./assets/icon/favicon2.ico">
+    <link rel="icon" href="./assets/frasquinhoRosa.svg">
     <link rel="stylesheet" href="./css/estiloLogin.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
@@ -42,8 +42,11 @@
                 </div>
                 <div class="jaTemUma">
                     <span>Não tem uma conta?</span>
-                    <button onclick="">Cadastre-se</button>
+                    <a href="../cadastroEnd.html">
+                        <button onclick="">Cadastre-se</button>
+                    </a>
                 </div>
+                <div id="div_erros_login"></div>
             </div>
         </div>
         <div id="div_aguardar" class="loading-div">
@@ -105,7 +108,7 @@
                     sessionStorage.ID_USUARIO = json.idUsuario;
                     window.location = "dashboard/dashnoardInitialPage.html";
 
-                    
+
 
                 });
 

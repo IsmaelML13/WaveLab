@@ -27,9 +27,9 @@
                             </a>
                         </li>
                         <li class="lista">
-                            <a href="estatisticaPage.html">
+                            <a href="../dashboard/dashboardChat.html">
                                 <!-- <i class="uil uil-presentation-line"></i> -->
-                                <span class="lista">Playlist</span>
+                                <span class="lista">Chat</span>
                             </a>
                         </li>
                         <li class="agora">
@@ -102,7 +102,7 @@
 <script>
     nomeUsu.innerHTML = "Salve, " + sessionStorage.NOME_USUARIO + "!";
 
-    window.onload = function obterDados() {
+    window.onload = function obterDadosPaginaAnalise() {
         fetch("/medidas/dadoRegiaoNordeste", {
             method: "GET",
             headers: {
@@ -139,73 +139,195 @@
                                                 headers: {
                                                     "Content-Type": "application/json",
                                                 },
-                                            }).then((dadoRegiaoCentroOeste) => { // centro oeste
-                                                dadoRegiaoCentroOeste.json().then((dadoRegiaoCentroOeste) => {
-                                                    dadoRegiaoSul.json().then((dadoRegiaoSul) => {
-                                                        dadoRegiaoSudeste.json().then((dadoRegiaoSudeste) => {
-                                                            dadoRegiaoNorte.json().then((dadoRegiaoNorte) => {
-                                                                dadoRegiaoNordeste.json().then((dadoRegiaoNordeste) => {
-                                                                    console.log(dadoRegiaoNordeste),
-                                                                        console.log(dadoRegiaoCentroOeste),
-                                                                        console.log(dadoRegiaoNorte),
-                                                                        console.log(dadoRegiaoSudeste),
-                                                                        console.log(dadoRegiaoSul),
-
-                                                                        new Chart(document.getElementById('myChartCanvas2'), {
-                                                                            type: 'bar',
-                                                                            data: {
-                                                                                labels: [""],
-                                                                                datasets: [{
-                                                                                    label: 'Sudeste',
-                                                                                    data: [`${dadoRegiaoSudeste[0].total}`],
-                                                                                    borderWidth: 9
-
+                                            }).then(function (dadoRegiaoCentroOeste) { // centro oeste
+                                                if (dadoRegiaoCentroOeste.ok) {
+                                                    fetch("/medidas/dados18", {
+                                                        method: "GET",
+                                                        headers: {
+                                                            "Content-Type": "application/json",
+                                                        },
+                                                    }).then(function (dados18) {
+                                                        if (dados18.ok) {
+                                                            fetch("/medidas/dados1825", {
+                                                                method: "GET",
+                                                                headers: {
+                                                                    "Content-Type": "application/json",
+                                                                },
+                                                            }).then(function (dados1825) {
+                                                                if (dados1825.ok) {
+                                                                    fetch("/medidas/dados2635", {
+                                                                        method: "GET",
+                                                                        headers: {
+                                                                            "Content-Type": "application/json",
+                                                                        },
+                                                                    }).then(function (dados2635) {
+                                                                        if (dados2635.ok) {
+                                                                            fetch("/medidas/dados3645", {
+                                                                                method: "GET",
+                                                                                headers: {
+                                                                                    "Content-Type": "application/json",
                                                                                 },
-                                                                                {
+                                                                            }).then(function (dados3645) {
+                                                                                if (dados3645.ok) {
+                                                                                    fetch("/medidas/dados4660", {
+                                                                                        method: "GET",
+                                                                                        headers: {
+                                                                                            "Content-Type": "application/json",
+                                                                                        },
+                                                                                    }).then(function (dados4660) {
+                                                                                        if (dados4660.ok) {
+                                                                                            fetch("/medidas/dados60", {
+                                                                                                method: "GET",
+                                                                                                headers: {
+                                                                                                    "Content-Type": "application/json",
+                                                                                                },
+                                                                                            }).then((dados60) => {
+                                                                                                dados60.json().then((dados60) => {
+                                                                                                    dados4660.json().then((dados4660) => {
+                                                                                                        dados3645.json().then((dados3645) => {
+                                                                                                            dados2635.json().then((dados2635) => {
+                                                                                                                dados1825.json().then((dados1825) => {
+                                                                                                                    dados18.json().then((dados18) => {
+                                                                                                                        dadoRegiaoCentroOeste.json().then((dadoRegiaoCentroOeste) => {
+                                                                                                                            dadoRegiaoSul.json().then((dadoRegiaoSul) => {
+                                                                                                                                dadoRegiaoSudeste.json().then((dadoRegiaoSudeste) => {
+                                                                                                                                    dadoRegiaoNorte.json().then((dadoRegiaoNorte) => {
+                                                                                                                                        dadoRegiaoNordeste.json().then((dadoRegiaoNordeste) => {
+                                                                                                                                            console.log(dadoRegiaoNordeste),
+                                                                                                                                                console.log(dadoRegiaoCentroOeste),
+                                                                                                                                                console.log(dadoRegiaoNorte),
+                                                                                                                                                console.log(dadoRegiaoSudeste)
+                                                                                                                                            console.log(dadoRegiaoSul),
+                                                                                                                                                console.log(dados18),
+                                                                                                                                                console.log(dados1825),
+                                                                                                                                                console.log(dados2635),
+                                                                                                                                                console.log(dados3645),
+                                                                                                                                                console.log(dados4660),
+                                                                                                                                                console.log(dados60);
 
-                                                                                    label: 'Nordeste',
-                                                                                    data: [`${dadoRegiaoNordeste[0].total}`],
-                                                                                    borderWidth: 9
-                                                                                },
-                                                                                {
+                                                                                                                                            new Chart(document.getElementById('myChartCanvas2'), {
+                                                                                                                                                type: 'bar',
+                                                                                                                                                data: {
+                                                                                                                                                    labels: [""],
+                                                                                                                                                    datasets: [{
+                                                                                                                                                        label: 'Sudeste',
+                                                                                                                                                        data: [`${dadoRegiaoSudeste[0].total}`],
+                                                                                                                                                        borderWidth: 9
 
-                                                                                    label: 'Norte',
-                                                                                    data: [`${dadoRegiaoNorte[0].total}`],
-                                                                                    borderWidth: 9
-                                                                                },
-                                                                                {
+                                                                                                                                                    },
+                                                                                                                                                    {
 
-                                                                                    label: 'Sul',
-                                                                                    data: [`${dadoRegiaoSul[0].total}`],
-                                                                                    borderWidth: 9
-                                                                                },
-                                                                                {
+                                                                                                                                                        label: 'Nordeste',
+                                                                                                                                                        data: [`${dadoRegiaoNordeste[0].total}`],
+                                                                                                                                                        borderWidth: 9
+                                                                                                                                                    },
+                                                                                                                                                    {
 
-                                                                                    label: 'Centro-Oeste',
-                                                                                    data: [`${dadoRegiaoCentroOeste[0].total}`],
-                                                                                    borderWidth: 9
+                                                                                                                                                        label: 'Norte',
+                                                                                                                                                        data: [`${dadoRegiaoNorte[0].total}`],
+                                                                                                                                                        borderWidth: 9
+                                                                                                                                                    },
+                                                                                                                                                    {
+
+                                                                                                                                                        label: 'Sul',
+                                                                                                                                                        data: [`${dadoRegiaoSul[0].total}`],
+                                                                                                                                                        borderWidth: 9
+                                                                                                                                                    },
+                                                                                                                                                    {
+
+                                                                                                                                                        label: 'Centro-Oeste',
+                                                                                                                                                        data: [`${dadoRegiaoCentroOeste[0].total}`],
+                                                                                                                                                        borderWidth: 9
+                                                                                                                                                    }
+
+                                                                                                                                                    ]
+                                                                                                                                                },
+
+                                                                                                                                                options: {
+                                                                                                                                                    scales: {
+                                                                                                                                                        y: {
+                                                                                                                                                            beginAtZero: true
+                                                                                                                                                        }
+                                                                                                                                                    }
+                                                                                                                                                }
+                                                                                                                                            });
+
+                                                                                                                                            new Chart(document.getElementById('myChartCanvas1'), {
+                                                                                                                                                type: 'bar',
+                                                                                                                                                data: {
+                                                                                                                                                    labels: [""],
+                                                                                                                                                    datasets: [{
+                                                                                                                                                        label: 'Menores de 18',
+                                                                                                                                                        data: [`${dados18[0].total}`],
+                                                                                                                                                        borderWidth: 9
+
+                                                                                                                                                    },
+                                                                                                                                                    {
+
+                                                                                                                                                        label: 'Entre 18 e 25',
+                                                                                                                                                        data: [`${dados1825[0].total}`],
+                                                                                                                                                        borderWidth: 9
+                                                                                                                                                    },
+                                                                                                                                                    {
+
+                                                                                                                                                        label: 'Entre 26 e 35',
+                                                                                                                                                        data: [`${dados2635[0].total}`],
+                                                                                                                                                        borderWidth: 9
+                                                                                                                                                    },
+                                                                                                                                                    {
+
+                                                                                                                                                        label: 'Entre 36 e 45',
+                                                                                                                                                        data: [`${dados3645[0].total}`],
+                                                                                                                                                        borderWidth: 9
+                                                                                                                                                    },
+                                                                                                                                                    {
+
+                                                                                                                                                        label: 'Entre 46 e 60',
+                                                                                                                                                        data: [`${dados4660[0].total}`],
+                                                                                                                                                        borderWidth: 9
+                                                                                                                                                    },
+                                                                                                                                                    {
+
+                                                                                                                                                        label: 'Maiores de 60',
+                                                                                                                                                        data: [`${dados60[0].total}`],
+                                                                                                                                                        borderWidth: 9
+                                                                                                                                                    }
+
+                                                                                                                                                    ]
+                                                                                                                                                },
+
+                                                                                                                                                options: {
+                                                                                                                                                    scales: {
+                                                                                                                                                        y: {
+                                                                                                                                                            beginAtZero: true
+                                                                                                                                                        }
+                                                                                                                                                    }
+                                                                                                                                                }
+                                                                                                                                            });
+
+                                                                                                                                        })
+                                                                                                                                    })
+                                                                                                                                })
+                                                                                                                            })
+                                                                                                                        })
+                                                                                                                    })
+                                                                                                                })
+                                                                                                            })
+                                                                                                        })
+                                                                                                    })
+                                                                                                })
+                                                                                            })
+                                                                                        }
+                                                                                    })
                                                                                 }
-
-                                                                                ]
-                                                                            },
-
-                                                                            options: {
-                                                                                scales: {
-                                                                                    y: {
-                                                                                        beginAtZero: true
-                                                                                    }
-                                                                                }
-                                                                            }
-                                                                        });
-
-
-                                                                })
+                                                                            })
+                                                                        }
+                                                                    })
+                                                                }
                                                             })
-                                                        })
+                                                        }
                                                     })
-                                                })
-
-
+                                                }
                                             })
                                         }
                                     })
@@ -217,107 +339,4 @@
             })
 
     }
-
-    // const ctxLine = document.getElementById('myChartCanvas1');
-
-    // new Chart(document.getElementById('myChartCanvas1'), {
-    //     type: 'bar',
-    //     data: {
-    //         labels: [""],
-    //         datasets: [{
-    //             label: 'Sudeste',
-    //             data: [80],
-    //             borderWidth: 9
-
-    //         },
-    //         {
-
-    //             label: 'Nordeste',
-    //             data: [30],
-    //             borderWidth: 9
-    //         },
-    //         {
-
-    //             label: 'Norte',
-    //             data: [30],
-    //             borderWidth: 9
-    //         },
-    //         {
-
-    //             label: 'Sul',
-    //             data: [30],
-    //             borderWidth: 9
-    //         },
-    //         {
-
-    //             label: 'Centro-Oeste',
-    //             data: [30],
-    //             borderWidth: 9
-    //         }
-
-    //         ]
-    //     },
-
-    //     options: {
-    //         scales: {
-    //             y: {
-    //                 beginAtZero: true
-    //             }
-    //         }
-    //     }
-    // });
-
-    // const ctxBar = document.getElementById('myChartCanvas2');
-
-    // new Chart(ctxBar, {
-    //     type: 'bar',
-    //     data: {
-    //         labels: [""],
-    //         datasets: [{
-    //             label: 'Menores de 18',
-    //             data: [22, 24, 27, 23, 20, 18],
-    //             borderWidth: 1
-    //         },
-    //         {
-    //             label: 'Entre 18 e 25 anos',
-    //             data: [90, 89, 93, 87, 88, 82],
-    //             borderWidth: 1
-
-    //         }, {
-    //             label: 'Entre 26 e 35 anos',
-    //             data: [90, 89, 93, 87, 88, 82],
-    //             borderWidth: 1
-
-    //         }, {
-    //             label: 'Entre 36 e 45 anos',
-    //             data: [90, 89, 93, 87, 88, 82],
-    //             borderWidth: 1
-
-    //         }, {
-    //             label: 'Entre 46 e 60 anos',
-    //             data: [90, 89, 93, 87, 88, 82],
-    //             borderWidth: 1
-
-    //         }, {
-    //             label: 'Maiores de 60 anos',
-    //             data: [90, 89, 93, 87, 88, 82],
-    //             borderWidth: 1
-
-    //         }
-
-    //         ]
-    //     },
-
-    //     options: {
-    //         scales: {
-    //             y: {
-    //                 beginAtZero: true
-    //             }
-    //         }
-    //     }
-    // });
-
-    // window.addEventListener("load", () => {
-    //     obterDados();
-    // });
 </script>

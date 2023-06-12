@@ -30,7 +30,7 @@ ul {
     height: 100%;
     width: 100%;
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
     /* align-items: center; */
     justify-content: center;
     background-color: #191919;
@@ -66,10 +66,7 @@ ul {
     margin-left: 60px;
 }
 
-.agora {
-    list-style: none;
-    color: #191919;
-}
+
 
 .lista span {
     color: #191919;
@@ -100,6 +97,8 @@ ul {
     justify-content: center;
     align-items: center;
     width: 50px;
+    list-style: none;
+    color: #191919;
 }
 
 .lista span {
@@ -154,7 +153,112 @@ ul {
     gap: 25px;
     margin-bottom: 20px;
 }
-.conteudo{
+
+.conteudo {
     display: flex;
+    flex-direction: column;
+    background-image: url("../assets/fundoDash.svg");
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.caixaBuscador {
+    font-family: 'Nunito Black', sans-serif;
+    display: flex;
+    flex-direction: column;
+    width: 800px;
+    height: 700px;
+    background: rgba(25, 25, 25, 0.93);
+    border: 1px solid #000000;
+    box-shadow: 8px 8px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 56px;
+    align-items: center;
+    /* justify-content: center; */
+    color: azure;
+    font-weight: 900;
+}
+
+.cabecalho{
+    display: flex;
+    flex-direction: column;
+    margin: 30px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    border-block-end: 1px solid black;
+
+}
+
+.titulo{
+    font-size: 22.5px;
+}
+
+.iptIcon{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.iptIcon input{
+    display: flex;
+    background-color: transparent;
+    border: 1px solid #CBCBCB;
+    border-radius: 7.5px;
+    width: 485px;
+    height: 45px;
+    color: white;
+    padding: 0 0 0 8px;;
+}
+
+
+
+.enviar{
+    background-color: transparent;
+    border: transparent;
+    cursor: pointer;
+}
+
+.segurandoTudo{
+    display: flex;
+    flex-direction: column;
+}
+
+.msgs{
+    display: flex;
+    /* align-items: center; */
+    flex-direction: column;
+    gap: 5px;
+    width: 90%;
+    height: 100%;
+    padding: 15px;
+}
+
+.iconTime{
+    display: flex;
+    align-items: center;
+    gap: 3.5px;
+}
+
+.nomeHora{
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+    gap: 20px;
+    
+}
+
+.nomeMsg{
+    font-size: 25px;
+    color: #FF003D;
+}
+
+.ritmoAgressivo{
+    display: flex;
+}
+
+.transparente{
+    color: transparent;
     
 }

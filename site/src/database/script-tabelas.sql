@@ -65,8 +65,9 @@ ADD CONSTRAINT unique_fkEndereco UNIQUE (fkEndereco);
 CREATE TABLE IF NOT EXISTS mensagens (
   idMensagens INT auto_increment NOT NULL,
   conteudo VARCHAR(200) NULL,
-  dataHora DATETIME NULL,
-  fkusuario INT NOT NULL,
+  amd DATE,
+  hora time,
+  fkusuario INT NOT null,
   PRIMARY KEY (idMensagens, fkusuario),
   CONSTRAINT fk_mensagens_usuario1
     FOREIGN KEY (fkusuario)
@@ -90,11 +91,22 @@ VALUES ('João', 'Silva', 'joao@example.com', '25', 1),
        ('Pedro', 'Santos', 'pedro@example.com', '35', 3),
        ('Ana', 'Ferreira', 'ana@example.com', '28', 4),
        ('Lucas', 'Oliveira', 'lucas@example.com', '82', 5);
+       
+       /*insert mensagens*/
+ INSERT INTO mensagens VALUES (null, 'agr sim q tudoo', now(), now(), 1); 
+ 
+ select * from mensagens;
+ 
+ select * from usuario;
+SELECT TIME_FORMAT(hora, '%H:%i') AS hora_minutos FROM mensagens;
+
+
 
 
 
 -- select forum
-select usuario.nome, mensagens.conteudo, mensagens.dataHora from usuario join mensagens on idUsuario = fkusuario;
+select usuario.nome as nome, mensagens.conteudo as mensagem, DATE_FORMAT(amd, '%d/%m/%Y') AS dat4, TIME_FORMAT(hora, '%H:%i') AS hora 
+from usuario join mensagens on idUsuario = fkusuario order by mensagens.idMensagens desc;
 
 -- selects analytic regiao país
 select count(*) from endereco where regiao like 'Nordeste';
@@ -105,11 +117,11 @@ select count(*) from endereco where regiao like 'Centro-oeste';
 
 -- select faixas de idade
 select count(*) as total from usuario where idade < 18;
-select count(*) from usuario where idade >= 18 AND idade <= 25;
-select count(*) from usuario where idade >= 26 AND idade <= 35;
-select count(*) from usuario where idade >= 36 AND idade <= 45;
-select count(*) from usuario where idade >= 46 AND idade <= 60;
-select count(*) from usuario where idade > 60;
+select count(*) as total from usuario where idade >= 18 AND idade <= 25;
+select count(*) as total from usuario where idade >= 26 AND idade <= 35;
+select count(*) as total from usuario where idade >= 36 AND idade <= 45;
+select count(*) as total from usuario where idade >= 46 AND idade <= 60;
+select count(*) as total from usuario where idade > 60;
 
 
 select usuario.nome, usuario.sobrenome, usuario.email, usuario.idade, endereco.cidade, endereco.estado, endereco.regiaoPais, endereco.cep
@@ -124,6 +136,11 @@ SELECT (idEndereco) FROM endereco
     LIMIT 1;
     
     select * from endereco;
+    select * from usuario;
+    
+    truncate table mensagens;
+    
+    select count(*) from mensagens;
 
 
 

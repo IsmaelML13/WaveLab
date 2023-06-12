@@ -101,6 +101,55 @@ function dadoRegiaoCentroOeste (){
     return database.executar(instrucaoSql);
 }
 
+function dados18 (){
+    instrucaoSql = ''
+    var instrucaoSql = `select count(*) as total from usuario where idade < 18;`
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function dados1825 (){
+    instrucaoSql = ''
+    var instrucaoSql = `select count(*) as total from usuario where idade >= 18 AND idade <= 25;`
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function dados2635 (){
+    instrucaoSql = ''
+    var instrucaoSql = `select count(*) as total from usuario where idade >= 26 AND idade <= 35;`
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function dados3645 (){
+    instrucaoSql = ''
+    var instrucaoSql = `select count(*) as total from usuario where idade >= 36 AND idade <= 45;`
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function dados4660 (){
+    instrucaoSql = ''
+    var instrucaoSql = `select count(*) as total from usuario where idade >= 46 AND idade <= 60;`
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function dados60 (){
+    instrucaoSql = ''
+    var instrucaoSql = `select count(*) as total from usuario where idade > 60;`
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+
 
 module.exports = {
     // buscarUltimasMedidas,
@@ -109,5 +158,13 @@ module.exports = {
     dadoRegiaoNorte,
     dadoRegiaoSudeste,
     dadoRegiaoSul,
-    dadoRegiaoCentroOeste
+    dadoRegiaoCentroOeste,
+    dados18,
+    dados1825,
+    dados2635,
+    dados3645,
+    dados4660, 
+    dados60
+
+
 }
