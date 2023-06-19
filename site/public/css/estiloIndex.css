@@ -28,17 +28,27 @@ body {
     margin: 0;
     padding: 0;
     /* background: #EBF0DE; */
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Nunito Black', sans-serif;
 }
 
 html,
 body {
-    height: 5000px;
-    max-width: 100%;
+    height: 3380px;
+    width: 100%;
     background: linear-gradient(360deg, #FF003D 0%, #191919 29.27%);
     background-blend-mode: darken;
     background-repeat: no-repeat;
 }
+
+a {
+    text-decoration: none;
+    color: #FF003D;
+    font-weight: 900;
+  }
+
+  ul {
+    list-style-type: none;
+  }
 
 .tela {
     height: 100%;
@@ -52,12 +62,24 @@ body {
    
 
 }
-::-webkit-scrollbar-track {
-    background-color: #FF003D; /* Cor de fundo da trilha */
-}
+body::-webkit-scrollbar {
+    width: 10px; /* Largura da barra de rolagem */
+  }
+
+  body::-webkit-scrollbar-track {
+    background-color: #191919; /* Cor de fundo da barra de rolagem */
+  }
+
+  body::-webkit-scrollbar-thumb {
+    background-color: #FF003D; /* Cor do polegar (a parte móvel da barra de rolagem) */
+  }
 
 .flex {
     display: flex;
+}
+
+.coluna{
+    flex-direction: column;
 }
 
 .navbar {
@@ -79,7 +101,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 125px;
-    padding: 40px 0 0 0;
+    padding: 60px 0 0 0;
 
 }
 
@@ -88,16 +110,26 @@ body {
 }
 
 .cabecalho {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #191919;
     justify-content: space-between;
-    width: 90%;
-    padding: 30px 0 0 70px;
+    width: 95.75%;
+    padding: 30px 30px 30px 42px;
     align-items: center;
-    height: 75px;
+    height: 45px;
 
 }
 
 .espacos {
     padding-right: 20px;
+}
+
+.estrutura{
+    display: flex;
+    flex-direction: column;
+    
 }
 
 .corpoSinta {
@@ -108,13 +140,13 @@ body {
     align-items: center;
     background-image: url("../assets/imsSintaSombra.png");
     background-size: cover;
-    height: 615px;
+    height: 800px;
     width: 100%;
 
 }
 
 .corpoSinta span {
-    font-family: 'Barlow', sans-serif;
+    /* font-family: 'Barlow', sans-serif; */
     font-size: 65px;
     color: #FF003D;
     font-weight: 1000
@@ -127,10 +159,11 @@ body {
     text-align: center;
     align-items: center;
     background-size: cover;
-    height: 70%;
+    height: 850px;  
     width: 100%;
     font-size: 20px;
     color: azure;
+    gap: 40px;
 }
 
 .corpoSobre .titulo {
@@ -159,4 +192,115 @@ body {
     flex-direction: column;
     width: 700px;
     font-weight: 900;
+}
+
+.corpoPlataforma{
+    font-family: 'Nunito Black', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    background-size: cover;
+    height: 900px;
+    width: 100%;
+    font-size: 20px;
+    color: azure;
+    gap: 40px;
+    padding: 105px 0 0 0;
+    background-image: url("../assets/fundo2.svg");
+}
+
+.subTitulo{
+    color: #FF003D;
+    font-size: 25px;
+    font-weight: 900;
+}
+
+.inicio{
+    font-family: 'Nunito Black', sans-serif;
+    font-weight: 900;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.buscador{
+    flex-direction: column;
+}
+
+.box{
+    display: flex;
+    flex-direction: column;
+    width: 875px;
+    gap: 15px;
+}
+
+.titulo{
+    color: #FF003D;
+    font-size: 40px;
+}
+
+.texto{
+    font-family: 'Nunito Black', sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+    color: azure;
+}
+
+.corpoRodape{
+    display: flex;
+    height: 720px;
+    width: 100%;
+
+}
+
+.tudinho{
+    height: 100%;
+    width: 900%;
+    align-items: center;
+    justify-content: end;
+    flex-direction: column;
+    font-family: 'Nunito Black', sans-serif;
+    font-weight: 900;
+    gap: 35px;
+}
+
+.cimaa{
+    gap: 650px
+    ;
+    width: 90%; 
+    padding: 40px;
+}
+
+.meio img{
+    width: 1650px;
+}
+
+.infos{
+    gap: 150px;
+}
+
+.baixo{
+    justify-content: space-between;
+    width: 90%;
+    padding: 20px;
+}
+
+.contato h1{
+    font-size: 25px;
+    font-weight: 900;
+}
+
+.comunidade h1{
+    font-size: 25px;
+    font-weight: 900;
+}
+
+.contato{
+    gap: 8px;
+}
+
+.comunidade{
+    gap: 8px;
 }

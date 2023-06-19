@@ -20,7 +20,7 @@
                 <div class="camposP">
                     <ul class="listaWave">
                         <li class="agora">
-                            <a href="dashboardPage.html">
+                            <a href="dashnoardInitialPage.html">
                                 <i class="uil uil-create-dashboard"></i>
                                 <span class="lista">Buscador</span>
                             </a>
@@ -47,7 +47,9 @@
                     <img src="../assets/linha.svg" width="103px" alt="">
                 </div>
                 <div id="divUsu" class="usuario">
-                    <span>NOME USUARIO</span>
+                    <span id="noemUsuario">
+                        <!-- NOME USUARIO -->
+                    </span>
                 </div>
                 <div class="exit">
                     <a href="../index.html">
@@ -58,11 +60,10 @@
         </div>
         <div class="conteudo" id="conteudo">
             <div id="caixaBuscador" class="caixaBuscador">
+                <div class="voltar">
+                    
                 <div class="cimaTudo">
-                    <div class="voltar">
-                        <a href="/public/dashboard/dashnoardInitialPage.html">
-                            <img src="/public/assets/back.svg" height="45px" alt="">
-                        </a>
+                   
                         
                     </div>
                     <!-- <div class="iptAndIcon">
@@ -107,9 +108,15 @@
 
 <script>
 
+    function plotarNome() {
+    var nome = sessionStorage.getItem("NOME_USUARIO");
+    noemUsuario.innerHTML = "Salve, " + nome+"!";
+}
+    
     window.addEventListener("load", () => {
         pesquisarDados(),
-        pesquisarDadosPlaylist()
+        pesquisarDadosPlaylist(),
+        plotarNome()
     })
 
     async function pesquisarDados() {
@@ -142,7 +149,7 @@
                 console.log(data);
                 // }
 
-                listagem.innerHTML += `
+                listagem.innerHTML = `
         
         <span class="titulo" id="divNome"> ${data.artists.items[0].data.profile.name}</span>
         <span class="sub">

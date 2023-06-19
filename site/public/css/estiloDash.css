@@ -26,6 +26,16 @@ ul {
     list-style: none;
 }
 
+input {
+    background-color: transparent;
+    border: 1px solid #CBCBCB;
+    border-radius: 7.5px;
+    width: 200px;
+    height: 35px;
+    color: white;
+    padding: 0 0 0 8px;
+}
+
 .tela {
     height: 100%;
     width: 100%;
@@ -242,4 +252,5 @@ ul {
 .titulo{
     font-size: 40px;
 }
+
 

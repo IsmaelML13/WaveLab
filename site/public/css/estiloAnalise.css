@@ -179,3 +179,14 @@ ul {
     color: azure;
     font-weight: 900;
 }
+
+.graficos{
+    display: flex;
+    /* flex-direction: row; */
+    gap: 100px;
+}
+
+.graficos1{
+    display: flex;
+    flex-direction: column;
+}
